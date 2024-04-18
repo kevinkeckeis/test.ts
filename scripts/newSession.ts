@@ -1,16 +1,7 @@
 import fs from "node:fs/promises";
+import { todaysSessionPath } from "./utils.js";
 
-const today = new Date();
-
-const dateFormatted = (date: Date) => {
-  const year = date.getFullYear().toString().slice(2, 4);
-  const month = ("0" + (date.getMonth() + 1)).slice(-2);
-  const day = ("0" + date.getDate()).slice(-2);
-  return `${year}-${month}-${day}`;
-};
-
-const todayFormatted = dateFormatted(today);
-const sessionPath = `./sessions/${todayFormatted}.ts`;
+const sessionPath = todaysSessionPath();
 const indexPath = `./index.ts`;
 
 // Create a session folder, if it does not exist
